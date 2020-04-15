@@ -1,0 +1,23 @@
+import React from "react";
+
+import { GET_PROJECTS } from "../actions/types";
+
+const initialState = {
+  projects: [],
+  project: {},
+};
+
+export default function projectReducer(state = initialState, action) {
+  switch (action.type) {
+    case GET_PROJECTS:
+      return {
+        ...state,
+        projects: action.payload,
+      };
+      break;
+
+    default:
+      return state;
+      break;
+  }
+}
