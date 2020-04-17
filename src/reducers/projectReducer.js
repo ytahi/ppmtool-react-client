@@ -1,6 +1,6 @@
 import React from "react";
 
-import { GET_PROJECTS, GET_PROJECT } from "../actions/types";
+import { GET_PROJECTS, GET_PROJECT, DELETE_PROJECT } from "../actions/types";
 
 const initialState = {
   projects: [],
@@ -19,6 +19,15 @@ export default function projectReducer(state = initialState, action) {
       return {
         ...state,
         project: action.payload,
+      };
+      break;
+
+    case DELETE_PROJECT:
+      return {
+        ...state,
+        projects: state.projects.filter(
+          (project) => project.projectIdentifier !== action.payload
+        ),
       };
       break;
 
